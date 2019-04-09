@@ -1,16 +1,19 @@
 {
-    "name": "3-code-challenges",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-      "test": "jest --coverage --verbose",
-      "watch": "jest --watchall"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "MIT",
-    "dependencies": {
-      "jest": "^24.1.0"
-    }
+  "name": "3-code-challenges",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage --verbose",
+    "watch": "jest --watchall"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "check-node-version": "^3.3.0"
+  },
+  "devDependencies": {
+    "jest": "^24.7.1"
   }
+}
