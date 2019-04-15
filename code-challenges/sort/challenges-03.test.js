@@ -63,6 +63,10 @@ Here is an example of the input:
 
 const sortByPrice = (arr) => {
   // Solution code here...
+  arr.sort((a , b) => {
+   return a.price - b.price;
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -75,6 +79,13 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 
 const sortNumbersByLength = (arr) => {
   // Solution code here...
+  arr.sort((a , b) => {
+    var newStringA = a.toString();
+    var newStringB = b.toString();
+
+    return newStringA.length - newStringB.length;
+  });
+  return arr;
 };
 
 /*-----------------------------------------------------------------------------------------------
@@ -97,8 +108,16 @@ const people = [
 
 const sortPeople = (arr) => {
   // Solution code here...
-
-
+  arr.sort((a , b) => {
+    if (a.lastName < b.lastName) {
+      return -1;
+    } else if (a.lastName > b.lastName) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -213,41 +232,41 @@ describe('Testing challenge 4', () => {
   });
 });
 
-// describe('Testing challenge 5', () => {
-//   test('It should sort items by their price', () => {
-//     expect(sortByPrice([
-//       {name: 'Sweatshirt', price: 45},
-//       {name: 'Bookmark', price: 2.50},
-//       {name: 'Tote bag', price: 15}
-//     ])).toStrictEqual([
-//       {name: 'Bookmark', price: 2.50},
-//       {name: 'Tote bag', price: 15},
-//       {name: 'Sweatshirt', price: 45},
-//     ]);
-//     expect(sortByPrice([{price: 12}, {price: 10}])).toStrictEqual([{price: 10}, {price: 12}]);
-//     expect(sortByPrice([])).toStrictEqual([]);
-//   });
-// });
+describe('Testing challenge 5', () => {
+  test('It should sort items by their price', () => {
+    expect(sortByPrice([
+      {name: 'Sweatshirt', price: 45},
+      {name: 'Bookmark', price: 2.50},
+      {name: 'Tote bag', price: 15}
+    ])).toStrictEqual([
+      {name: 'Bookmark', price: 2.50},
+      {name: 'Tote bag', price: 15},
+      {name: 'Sweatshirt', price: 45},
+    ]);
+    expect(sortByPrice([{price: 12}, {price: 10}])).toStrictEqual([{price: 10}, {price: 12}]);
+    expect(sortByPrice([])).toStrictEqual([]);
+  });
+});
 
-// describe('Testing challenge 6', () => {
-//   test('It should sort numbers by their length', () => {
-//     expect(sortNumbersByLength([10, 2.8, 1, -47.75])).toStrictEqual([1, 10, 2.8, -47.75]);
-//     expect(sortNumbersByLength([100, 2.82, 1, -47.75])).toStrictEqual([1, 100, 2.82, -47.75]);
-//     expect(sortNumbersByLength([1,2,3])).toEqual(expect.arrayContaining([1,2,3]));
-//   });
-// });
+describe('Testing challenge 6', () => {
+  test('It should sort numbers by their length', () => {
+    expect(sortNumbersByLength([10, 2.8, 1, -47.75])).toStrictEqual([1, 10, 2.8, -47.75]);
+    expect(sortNumbersByLength([100, 2.82, 1, -47.75])).toStrictEqual([1, 100, 2.82, -47.75]);
+    expect(sortNumbersByLength([1,2,3])).toEqual(expect.arrayContaining([1,2,3]));
+  });
+});
 
-// describe('Testing challenge 7', () => {
-//   test('It should sort people by their last names', () => {
-//     expect(sortPeople(people)).toStrictEqual([
-//       new Person('Casey', 'Codefellow', 38),
-//       new Person('Stan', 'Seattle', 67),
-//       new Person('Wes', 'Washington', 25),
-//     ]);
-//     expect(sortPeople([{lastName: 'banana'}, {lastName: 'apple'}]))
-//       .toStrictEqual([{lastName: 'apple'}, {lastName: 'banana'}]);
-//   });
-// });
+describe('Testing challenge 7', () => {
+  test('It should sort people by their last names', () => {
+    expect(sortPeople(people)).toStrictEqual([
+      new Person('Casey', 'Codefellow', 38),
+      new Person('Stan', 'Seattle', 67),
+      new Person('Wes', 'Washington', 25),
+    ]);
+    expect(sortPeople([{lastName: 'banana'}, {lastName: 'apple'}]))
+      .toStrictEqual([{lastName: 'apple'}, {lastName: 'banana'}]);
+  });
+});
 
 describe('Testing challenge 8', () => {
   test('It should sort people with more strict ordering', () => {
