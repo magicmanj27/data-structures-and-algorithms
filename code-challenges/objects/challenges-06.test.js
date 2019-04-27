@@ -103,7 +103,7 @@ const hasChildrenValues = (arr, character) => {
   let myVar = false;
   arr.forEach(characterObj => {
 
-  let characterVals = Object.entries(characterObj);
+  let characterVals = Object.values(characterObj);
 
     if (characterVals[0] === character && characterVals[2].length > 0) {
       myVar = true;
