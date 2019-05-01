@@ -59,14 +59,14 @@ Read the MDN documentation on String.charCodeAt() if necessary.
 For example: charCode(['h','i']) returns [104, 105].
 ------------------------------------------------------------------------------------------------ */
 
-const charCode = (arr) => {
+const charCode = (arr) => arr.map((val, idx) => val.toString().charCodeAt([0]));
   // Solution code here...
-  let myEmpArr = [];
-  arr.map((val, idx) => {
-    myEmpArr.push(val.toString().charCodeAt([0]));
-  });
-  return myEmpArr;
-};
+  // let myEmpArr = [];
+  // arr.map((val, idx) => {
+  //   myEmpArr.push(val.toString().charCodeAt([0]));
+  // });
+  // return myEmpArr;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -78,9 +78,7 @@ If any element in the array is not a number, the resulting array should have the
 For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 ------------------------------------------------------------------------------------------------ */
 
-const evenOdd = (arr) => {
-  // Solution code here...
-};
+const evenOdd = (arr) => arr.map((val) => typeof val === 'string' ? 'N/A' : val % 2 !== 0 ? 'odd' : 'even'); 
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -124,9 +122,8 @@ const snorlaxAbilities = {
   weight: 4600,
 };
 
-const extractAbilities = (arr) => {
-  // Solution code here...
-};
+const extractAbilities = (arr) => snorlaxAbilities.abilities.map((val) => val.ability.name);
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7
@@ -171,9 +168,13 @@ const snorlaxStats = {
   weight: 4600,
 };
 
+
 const extractStats = (arr) => {
   // Solution code here...
-};
+   return snorlaxStats.stats.map((val) => {
+     return {name : val.stat.name, total : val.effort + val.baseStat};
+   });
+}; 
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -248,20 +249,20 @@ describe('Testing challenge 5', () => {
   });
 });
 
-// describe('Testing challenge 6', () => {
-//   test('It should return an array containing only the ability names', () => {
-//     expect(extractAbilities(snorlaxAbilities.abilities)).toStrictEqual(['gluttony', 'cute charm', 'immunity']);
-//     expect(extractAbilities(snorlaxAbilities.abilities).length).toStrictEqual(3);
-//   });
-// });
+describe('Testing challenge 6', () => {
+  test('It should return an array containing only the ability names', () => {
+    expect(extractAbilities(snorlaxAbilities.abilities)).toStrictEqual(['gluttony', 'cute charm', 'immunity']);
+    expect(extractAbilities(snorlaxAbilities.abilities).length).toStrictEqual(3);
+  });
+});
 
-// describe('Testing challenge 7', () => {
-//   test('It should return an array containing objects with name and total values', () => {
-//     expect(extractStats(snorlaxStats.stats)).toStrictEqual([
-//       { name: 'speed', total: 35, },
-//       { name: 'special-defense', total: 112, },
-//       { name: 'special-attack', total: 74, },
-//     ]);
-//     expect(extractStats(snorlaxStats.stats).length).toStrictEqual(3);
-//   });
-// });
+describe('Testing challenge 7', () => {
+  test('It should return an array containing objects with name and total values', () => {
+    expect(extractStats(snorlaxStats.stats)).toStrictEqual([
+      { name: 'speed', total: 35, },
+      { name: 'special-defense', total: 112, },
+      { name: 'special-attack', total: 74, },
+    ]);
+    expect(extractStats(snorlaxStats.stats).length).toStrictEqual(3);
+  });
+});
