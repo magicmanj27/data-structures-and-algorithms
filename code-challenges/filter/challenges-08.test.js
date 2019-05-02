@@ -39,9 +39,7 @@ Write a function named notInFirstArray that, given two arrays as input, uses fil
 For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
-const notInFirstArray = (forbiddenValues, arr) => {
-  // Solution code here...
-};
+const notInFirstArray = (forbiddenValues, arr) => arr.filter(index => !forbiddenValues.includes(index) ? true : false);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -83,8 +81,13 @@ const snorlaxData = {
 };
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
-  // Solution code here...
+  // Solution code here... 
+  return arr.filter(data => data.baseStat > minBaseStat);
+  // return myArr.map((element) => element.stat.name);
+
+  // return arr.filter(data => data.baseStat > minBaseStat).map((element) => element.stat.name);
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -196,40 +199,40 @@ describe('Testing challenge 2', () => {
   });
 });
 
-// describe('Testing challenge 3', () => {
-//   const firstNums = [1, 2, 3];
-//   const secondNums = [1, 2, 3, 4];
+describe('Testing challenge 3', () => {
+  const firstNums = [1, 2, 3];
+  const secondNums = [1, 2, 3, 4];
 
-//   const firstStrings = ['Demi', 'Gregor', 'Hound'];
-//   const secondStrings = ['Gary', 'Charlotte', 'Demi', 'Gregor', 'Hound'];
+  const firstStrings = ['Demi', 'Gregor', 'Hound'];
+  const secondStrings = ['Gary', 'Charlotte', 'Demi', 'Gregor', 'Hound'];
 
-//   test('It should return an array that includes any elements not in the first array', () => {
-//     expect(notInFirstArray(firstNums, secondNums)).toStrictEqual([4]);
-//     expect(notInFirstArray(firstNums, secondNums).length).toStrictEqual(1);
-//   });
+  test('It should return an array that includes any elements not in the first array', () => {
+    expect(notInFirstArray(firstNums, secondNums)).toStrictEqual([4]);
+    expect(notInFirstArray(firstNums, secondNums).length).toStrictEqual(1);
+  });
 
-//   test('It should also work with an array of strings', () => {
-//     expect(notInFirstArray(firstStrings, secondStrings)).toStrictEqual(['Gary', 'Charlotte']);
-//     expect(notInFirstArray(firstStrings, secondStrings).length).toStrictEqual(2);
-//   });
+  test('It should also work with an array of strings', () => {
+    expect(notInFirstArray(firstStrings, secondStrings)).toStrictEqual(['Gary', 'Charlotte']);
+    expect(notInFirstArray(firstStrings, secondStrings).length).toStrictEqual(2);
+  });
 
-//   test('It should work with empty arrays', () => {
-//     expect(notInFirstArray([], [])).toStrictEqual([]);
-//     expect(notInFirstArray([], [1,2,3,4,5])).toStrictEqual([1,2,3,4,5]);
-//     expect(notInFirstArray([1,2,3,4,5], [])).toStrictEqual([]);
-//   });
-// });
+  test('It should work with empty arrays', () => {
+    expect(notInFirstArray([], [])).toStrictEqual([]);
+    expect(notInFirstArray([], [1,2,3,4,5])).toStrictEqual([1,2,3,4,5]);
+    expect(notInFirstArray([1,2,3,4,5], [])).toStrictEqual([]);
+  });
+});
 
-// describe('Testing challenge 4', () => {
-//   test('It should return an array containing the stats that are greater than the input', () => {
-//     expect(getBaseStatGreaterThan(snorlaxData.stats, 75)).toStrictEqual([ { stat: { url: 'https://pokeapi.co/api/v2/stat/5/', name: 'special-defense' }, effort: 2, baseStat: 110 } ]);
-//     expect(getBaseStatGreaterThan(snorlaxData.stats, 75).length).toStrictEqual(1);
-//     expect(getBaseStatGreaterThan(snorlaxData.stats, 110)).toStrictEqual([]);
-//   });
-//   test('It should work for non-Snorlax data', () => {
-//     expect(getBaseStatGreaterThan([{baseStat: 10}, {baseStat: -85}, {baseStat: 0}, {baseStat: -50}], -60)).toStrictEqual([{baseStat: 10}, {baseStat: 0}, {baseStat: -50}]);
-//   });
-// });
+describe('Testing challenge 4', () => {
+  test('It should return an array containing the stats that are greater than the input', () => {
+    expect(getBaseStatGreaterThan(snorlaxData.stats, 75)).toStrictEqual([ { stat: { url: 'https://pokeapi.co/api/v2/stat/5/', name: 'special-defense' }, effort: 2, baseStat: 110 } ]);
+    expect(getBaseStatGreaterThan(snorlaxData.stats, 75).length).toStrictEqual(1);
+    expect(getBaseStatGreaterThan(snorlaxData.stats, 110)).toStrictEqual([]);
+  });
+  test('It should work for non-Snorlax data', () => {
+    expect(getBaseStatGreaterThan([{baseStat: 10}, {baseStat: -85}, {baseStat: 0}, {baseStat: -50}], -60)).toStrictEqual([{baseStat: 10}, {baseStat: 0}, {baseStat: -50}]);
+  });
+});
 
 // describe('Testing challenge 5', () => {
 //   test('It should return the name of the stats that exceed that maximum', () => {
