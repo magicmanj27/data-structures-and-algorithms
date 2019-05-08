@@ -187,6 +187,8 @@ const countPrimeNumbers = (arr) => {
  return myArr.length;
 };
 
+// Making change for Github 
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
