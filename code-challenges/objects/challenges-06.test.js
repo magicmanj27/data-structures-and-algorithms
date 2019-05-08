@@ -81,6 +81,7 @@ const getHouses = (arr) => {
   // Solution code here...
   arr.forEach(function(element) {
     houses.push(element.house);
+    
   })
   return houses;
 };
@@ -229,11 +230,11 @@ describe('Testing challenge 4', () => {
   });
 });
 
-// describe('Testing challenge 5', () => {
-//   test('It should return the number of characters in the array', () => {
-//     expect(totalCharacters(characters)).toStrictEqual(27);
-//   });
-// });
+describe('Testing challenge 5', () => {
+  test('It should return the number of characters in the array', () => {
+    expect(totalCharacters(characters)).toStrictEqual(27);
+  });
+});
 
 // describe('Testing challenge 6', () => {
 //   test('It should return an object for each house containing the name and size', () => {
