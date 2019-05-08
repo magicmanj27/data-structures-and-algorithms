@@ -187,6 +187,9 @@ const countPrimeNumbers = (arr) => {
  return myArr.length;
 };
 
+// Making change for Github for canvas submission
+
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
