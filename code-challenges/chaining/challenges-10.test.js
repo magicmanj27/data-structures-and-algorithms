@@ -57,10 +57,8 @@ This function should then raise 2 to the power of the resulting numbers, returni
 For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
-const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
-  return input.map(arr => arr.filter(val => typeof val === 'number' && val % 5 === 0).map(val => Math.pow(2, val)));
-};
+const divisibleByFiveTwoToThePower = (input) => input.map(arr => arr.filter(val => typeof val === 'number' && val % 5 === 0).map(val => Math.pow(2, val)));
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -124,10 +122,8 @@ let starWarsData = [{
   gender: 'female'
 }];
 
-let findMaleAndFemale = (data) => {
-  // Solution code here...
-  return data.filter(character => character.gender === 'male' || character.gender === 'female').map(character => character.name).join(' and ');
-};
+let findMaleAndFemale = (data) => data.filter(character => character.gender === 'male' || character.gender === 'female').map(character => character.name).join(' and ');
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
