@@ -45,7 +45,11 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  let myArr = [];
+  hours.forEach(function(element, i) {
+      myArr.push({ sales: `${data[i]} cookies`, time: hours[i]});
+    }) 
+  return myArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,7 +71,14 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  let myArr = [];
+  for(let i = 0; i < arr.length; i++){
+    for(let j = 0; j < arr[i].items.length ; j++) {
+      if(arr[i].items[j].name === "Treats") {
+        return arr[i].items[j].quantity;
+      }
+    }
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -90,6 +101,7 @@ The top row of the board is considered row zero and row numbers increase as they
 
 const battleship = (board, row, col) => {
   //  Solution code here...
+  return board[row][col] === '#' ? 'hit' : 'miss';
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -102,6 +114,14 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 
 const calculateProduct = (numbers) => {
   // Solution code here...
+  let sum = 1;
+  for(let i = 0; i < numbers.length; i++) {
+    for (let j = 0; j < numbers[i].length; j++) {
+     sum *= numbers[i][j];
+    } 
+  
+  }
+  return sum;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -122,6 +142,15 @@ const weeklyTemperatures = [
 
 const averageDailyTemperature = (weather) => {
   // Solution code here...
+  let myTemp = 0;
+  let counter = 0;
+  for(let i = 0; i < weather.length; i++) {
+    for(let j = 0; j < weather[i].length; j++) {
+      myTemp += weather[i][j]; 
+      counter++
+    }
+  }
+     return myTemp / counter;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -179,71 +208,71 @@ describe('Testing challenge 1', () => {
   });
 });
 
-// describe('Testing challenge 2', () => {
-//   test('It should create an object of data for each store', () => {
-//     expect(salesData(hoursOpen, grandTotal(cookieStores))).toStrictEqual([
-//       { sales: '88 cookies', time: '9 a.m.' },
-//       { sales: '153 cookies', time: '10 a.m.' },
-//       { sales: '252 cookies', time: '11 a.m.' },
-//       { sales: '286 cookies', time: '12 p.m.' },
-//       { sales: '139 cookies', time: '1 p.m.' },
-//       { sales: '161 cookies', time: '2 p.m.' },
-//       { sales: '145 cookies', time: '3 p.m.' },
-//       { sales: '232 cookies', time: '4 p.m.' },
-//       { sales: '276 cookies', time: '5 p.m.' },
-//       { sales: '207 cookies', time: '6 p.m.' },
-//       { sales: '161 cookies', time: '7 p.m.' },
-//       { sales: '169 cookies', time: '8 p.m.' }
-//     ]);
+describe('Testing challenge 2', () => {
+  test('It should create an object of data for each store', () => {
+    expect(salesData(hoursOpen, grandTotal(cookieStores))).toStrictEqual([
+      { sales: '88 cookies', time: '9 a.m.' },
+      { sales: '153 cookies', time: '10 a.m.' },
+      { sales: '252 cookies', time: '11 a.m.' },
+      { sales: '286 cookies', time: '12 p.m.' },
+      { sales: '139 cookies', time: '1 p.m.' },
+      { sales: '161 cookies', time: '2 p.m.' },
+      { sales: '145 cookies', time: '3 p.m.' },
+      { sales: '232 cookies', time: '4 p.m.' },
+      { sales: '276 cookies', time: '5 p.m.' },
+      { sales: '207 cookies', time: '6 p.m.' },
+      { sales: '161 cookies', time: '7 p.m.' },
+      { sales: '169 cookies', time: '8 p.m.' }
+    ]);
 
-//     expect(salesData(hoursOpen, grandTotal(cookieStores)).length).toStrictEqual(hoursOpen.length);
-//   });
-// });
+    expect(salesData(hoursOpen, grandTotal(cookieStores)).length).toStrictEqual(hoursOpen.length);
+  });
+});
 
 
-// describe('Testing challenge 3', () => {
-//   test('It should return the number 24', () => {
-//     expect(howManyTreats(errands)).toStrictEqual(24);
-//   });
-// });
+describe('Testing challenge 3', () => {
+  test('It should return the number 24', () => {
+    expect(howManyTreats(errands)).toStrictEqual(24);
+  });
+});
 
-// describe('Testing challenge 4', () => {
-//   const battleshipData = [
-//     ['#', ' ', '#', ' '],
-//     ['#', ' ', '#', ' '],
-//     ['#', ' ', ' ', ' '],
-//     [' ', ' ', '#', '#'],
-//   ];
+describe('Testing challenge 4', () => {
+  const battleshipData = [
+    ['#', ' ', '#', ' '],
+    ['#', ' ', '#', ' '],
+    ['#', ' ', ' ', ' '],
+    [' ', ' ', '#', '#'],
+  ];
 
-//   test('It should return "hit" when it hits a boat', () => {
-//     expect(battleship(battleshipData, 0, 0)).toStrictEqual('hit');
-//     expect(battleship(battleshipData, 1, 0)).toStrictEqual('hit');
-//   });
+  test('It should return "hit" when it hits a boat', () => {
+    expect(battleship(battleshipData, 0, 0)).toStrictEqual('hit');
+    expect(battleship(battleshipData, 1, 0)).toStrictEqual('hit');
+  });
 
-//   test('It should return "miss" when it doesn\'t hit a boat', () => {
-//     expect(battleship(battleshipData, 0, 1)).toStrictEqual('miss');
-//     expect(battleship(battleshipData, 3, 0)).toStrictEqual('miss');
-//   });
-// });
+  test('It should return "miss" when it doesn\'t hit a boat', () => {
+    expect(battleship(battleshipData, 0, 1)).toStrictEqual('miss');
+    expect(battleship(battleshipData, 3, 0)).toStrictEqual('miss');
+  });
+});
 
-// describe('Testing challenge 5', () => {
-//   test('It should multiply all the numbers together', () => {
-//     expect(calculateProduct([[1,2], [3,4], [5,6]])).toStrictEqual(720);
-//   });
+describe('Testing challenge 5', () => {
+  test('It should multiply all the numbers together', () => {
+    expect(calculateProduct([[1,2], [3,4], [5,6]])).toStrictEqual(720);
+  });
 
-//   test('It should return zero if there are any zeroes in the data', () => {
-//     expect(calculateProduct([[2, 3, 4, 6, 0], [4, 3, 7], [2, 4, 6]])).toStrictEqual(0);
-//   });
-//   test('It should work even if some of the arrays contain no numbers', () => {
-//     expect(calculateProduct([[1,2], [], [3,4,5]])).toStrictEqual(120);
-//   });
-// });
+  test('It should return zero if there are any zeroes in the data', () => {
+    expect(calculateProduct([[2, 3, 4, 6, 0], [4, 3, 7], [2, 4, 6]])).toStrictEqual(0);
+  });
+  test('It should work even if some of the arrays contain no numbers', () => {
+    expect(calculateProduct([[1,2], [], [3,4,5]])).toStrictEqual(120);
+  });
+});
 
-// describe('Testing challenge 6', () => {
-//   test('It should calculate and return the average temperature of the data set', () => {
-//     expect(averageDailyTemperature(weeklyTemperatures)).toStrictEqual(60.25);
-//   });
-// });
+describe('Testing challenge 6', () => {
+  test('It should calculate and return the average temperature of the data set', () => {
+    expect(averageDailyTemperature(weeklyTemperatures)).toStrictEqual(60.25);
+  });
+});
 
 // describe('Testing challenge 7', () => {
 //   test('It should return the lowest weekly average temperature within the data set', () => {
