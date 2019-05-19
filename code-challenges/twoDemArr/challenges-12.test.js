@@ -172,6 +172,20 @@ let lowestWeeklyTemperatureData = [
 
 const lowestWeeklyAverage = (weather) => {
   // Solution code here...
+  let myTemp = 100;
+  for (let i = 0; i < weather.length; i++) {
+    let days = 0;
+    let temp = 0;
+    for (let j = 0; j < weather[i].length; j++) {
+      days++;
+      temp += weather[i][j];
+    }
+    let weeklyAvg = temp / days;
+    if (weeklyAvg < myTemp) {
+      myTemp = weeklyAvg;
+    }
+  }
+  return myTemp;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -188,8 +202,19 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 
 const excel = (str) => {
   // Solution code here...
-};
-
+  let sum = [];
+  let rows = str.split('\n');
+  rows.forEach(row => {
+    let value = 0;
+    let columns = row.split(',');
+    columns.forEach(column => {
+      let number = parseInt(column);
+      value += number;
+    });
+    sum.push(value);
+  });
+  return sum;
+}
 /* ------------------------------------------------------------------------------------------------
 TESTS
 
@@ -274,19 +299,19 @@ describe('Testing challenge 6', () => {
   });
 });
 
-// describe('Testing challenge 7', () => {
-//   test('It should return the lowest weekly average temperature within the data set', () => {
-//     expect(lowestWeeklyAverage(weeklyTemperatures)).toStrictEqual(57);
-//     expect(lowestWeeklyAverage(lowestWeeklyTemperatureData)).toStrictEqual(46);
-//   });
-// });
+describe('Testing challenge 7', () => {
+  test('It should return the lowest weekly average temperature within the data set', () => {
+    expect(lowestWeeklyAverage(weeklyTemperatures)).toStrictEqual(57);
+    expect(lowestWeeklyAverage(lowestWeeklyTemperatureData)).toStrictEqual(46);
+  });
+});
 
-// describe('Testing challenge 8', () => {
-//   test('It should return the total count for each row', () => {
-//     let result = excel('1,1,1\n4,4,4\n9,9,9');
-//     expect(result.length).toStrictEqual(3);
-//     expect(result[0]).toStrictEqual(3);
-//     expect(result[1]).toStrictEqual(12);
-//     expect(result[2]).toStrictEqual(27);
-//   });
-// });
+describe('Testing challenge 8', () => {
+  test('It should return the total count for each row', () => {
+    let result = excel('1,1,1\n4,4,4\n9,9,9');
+    expect(result.length).toStrictEqual(3);
+    expect(result[0]).toStrictEqual(3);
+    expect(result[1]).toStrictEqual(12);
+    expect(result[2]).toStrictEqual(27);
+  });
+});
