@@ -186,7 +186,7 @@ const lowestWeeklyAverage = (weather) => {
     }
   }
   return myTemp;
-};
+}; //make branch
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8
